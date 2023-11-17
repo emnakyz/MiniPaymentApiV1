@@ -12,8 +12,8 @@ using MiniPaymentApiV1.Persistence.Contexts;
 namespace MiniPaymentApiV1.Persistence.Migrations
 {
     [DbContext(typeof(MiniPaymentAPIDbContext))]
-    [Migration("20231116230801_mig_1")]
-    partial class mig_1
+    [Migration("20231117224504_mig_3")]
+    partial class mig_3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,24 +30,25 @@ namespace MiniPaymentApiV1.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("BankId")
-                        .HasColumnType("int");
+                    b.Property<string>("BankId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("NetAmount")
-                        .HasColumnType("int");
+                    b.Property<decimal>("NetAmount")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("OrderReferance")
+                    b.Property<string>("OrderReference")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TotalAmount")
-                        .HasColumnType("int");
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("datetime2");
@@ -66,14 +67,15 @@ namespace MiniPaymentApiV1.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("TransactionId")
                         .HasColumnType("uniqueidentifier");

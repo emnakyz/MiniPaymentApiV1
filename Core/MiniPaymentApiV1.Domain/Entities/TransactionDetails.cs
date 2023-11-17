@@ -1,4 +1,5 @@
 ﻿using MiniPaymentApiV1.Domain.Entities.Common;
+using MiniPaymentApiV1.Domain.Enums;
 
 namespace MiniPaymentApiV1.Domain.Entities
 {
@@ -6,9 +7,10 @@ namespace MiniPaymentApiV1.Domain.Entities
     {
 
         public Guid TransactionId { get; set; }
-        public Transaction Transaction { get; set; }
         public string TransactionType { get; set; }
-        public bool Status { get; set; }
-        public int Amount { get; set; }
+        public string Status { get; set; }
+        public decimal Amount { get; set; }
+
+        public Transaction Transaction { get; set; }
     }
 }

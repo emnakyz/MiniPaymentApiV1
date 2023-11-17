@@ -2,6 +2,6 @@
 {
     static public class AuthorizeDefinitionConstants
     {
-        public const string Payments = "Payments";
+        public const string Payment = "Payment";
     }
 }

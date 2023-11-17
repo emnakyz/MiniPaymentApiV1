@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Core\MiniPaymentApiV1.Application\MiniPaymentApiV1.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\MiniPaymentApiV1.Persistence\MiniPaymentApiV1.Persistence.csproj" />
   </ItemGroup>

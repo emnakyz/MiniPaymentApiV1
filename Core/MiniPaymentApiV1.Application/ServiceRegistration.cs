@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MiniPaymentApiV1.Application
 {
@@ -6,6 +7,7 @@ namespace MiniPaymentApiV1.Application
     {
         public static void AddApplicationServices(this IServiceCollection collection)
         {
+            collection.AddMediatR(typeof(ServiceRegistration));
             collection.AddHttpClient();
         }
     }

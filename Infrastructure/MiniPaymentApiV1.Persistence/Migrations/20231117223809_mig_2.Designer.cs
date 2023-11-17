@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiniPaymentApiV1.Persistence.Contexts;
 
@@ -11,9 +12,10 @@ using MiniPaymentApiV1.Persistence.Contexts;
 namespace MiniPaymentApiV1.Persistence.Migrations
 {
     [DbContext(typeof(MiniPaymentAPIDbContext))]
-    partial class MiniPaymentAPIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231117223809_mig_2")]
+    partial class mig_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,9 +31,10 @@ namespace MiniPaymentApiV1.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BankId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("CreatedDate")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("NetAmount")
@@ -48,10 +51,10 @@ namespace MiniPaymentApiV1.Persistence.Migrations
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime?>("TransactionDate")
+                    b.Property<DateTime>("TransactionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -68,7 +71,7 @@ namespace MiniPaymentApiV1.Persistence.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime?>("CreatedDate")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
@@ -82,7 +85,7 @@ namespace MiniPaymentApiV1.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
