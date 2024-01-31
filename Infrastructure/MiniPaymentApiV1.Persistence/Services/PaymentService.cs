@@ -1,5 +1,6 @@
 ﻿using MiniPaymentApiV1.Application.Abstractions.Services;
 using MiniPaymentApiV1.Application.DTOs.Payment;
+using MiniPaymentApiV1.Application.Features.Commands.Payment.Pay;
 using MiniPaymentApiV1.Application.Repositories;
 using MiniPaymentApiV1.Domain.Entities;
 using MiniPaymentApiV1.Domain.Enums;
@@ -21,6 +22,7 @@ namespace MiniPaymentApiV1.Persistence.Services
             _transactionDetailsWriteRepository = transactionDetailsWriteRepository;
             _transactionReadRepository = transactionReadRepository;
             _transactionDetailsReadRepository = transactionDetailsReadRepository;
+
         }
 
         public Task CancelAsync(Guid transactionId)
@@ -33,17 +35,26 @@ namespace MiniPaymentApiV1.Persistence.Services
             throw new NotImplementedException();
         }
 
-        public async Task PayAsync(CreateTransaction transaction)
+        public async Task<PayCommandResponse> PayAsync(CreateTransaction transaction)
         {
-         
+
+
             await _transactionWriteRepository.AddAsync(new()
             {
+
+                Id = Guid.NewGuid(),
+                BankId = transaction.BankId,
                 TotalAmount = transaction.TotalAmount,
                 NetAmount = transaction.NetAmount,
-                Status = transaction.Status,
-                OrderReference = transaction.OrderReference
+                Status = "Success", 
+                OrderReference = transaction.OrderReference,
+                TransactionDate = DateTime.Now
             });
             await _transactionWriteRepository.SaveAsync();
+
+          
+            PayCommandResponse response = new() { Message = "Payment successful." };         
+            return response;
         }
 
         public Task RefundAsync(Guid transactionId)

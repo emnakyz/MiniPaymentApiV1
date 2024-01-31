@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\Payment\Cancel\" />
     <Folder Include="Features\Commands\Payment\Refund\" />
     <Folder Include="Features\Queries\" />
   </ItemGroup>

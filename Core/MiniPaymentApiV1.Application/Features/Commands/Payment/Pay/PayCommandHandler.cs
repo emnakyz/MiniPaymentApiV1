@@ -19,16 +19,36 @@ namespace MiniPaymentApiV1.Application.Features.Commands.Payment.Pay
 
         public async Task<PayCommandResponse> Handle(PayCommandRequest request, CancellationToken cancellationToken)
         {
-            await _paymentService.PayAsync(new()
+
+            //PayCommandResponse response = await _paymentService.PayAsync(new()
+            //{
+            //    //TotalAmount = request.TotalAmount,
+            //    //NetAmount = request.NetAmount,
+            //    //Status = request.Status,
+            //    //OrderReference = request.OrderReference
+
+            //    BankId = request.BankId,
+            //    TotalAmount = request.TotalAmount,
+            //    NetAmount = request.NetAmount,
+            //    //Status = request.Status,
+            //    OrderReference = request.OrderReference,
+
+
+            //});
+
+
+            PayCommandResponse response = await _paymentService.PayAsync(new()
             {
+                BankId = request.BankId,
                 TotalAmount = request.TotalAmount,
                 NetAmount = request.NetAmount,
-                Status = request.Status,
-                OrderReference = request.OrderReference
-
+                OrderReference = request.OrderReference,
             });
 
-            return new();
+            return new()
+            {
+                Message = response.Message,
+            };
         }
     }
 }

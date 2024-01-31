@@ -9,6 +9,7 @@ namespace MiniPaymentApiV1.Application.DTOs.Payment
 
     public class CreateTransaction
     {
+        public string? BankId { get; set; }
         public decimal TotalAmount { get; set; }
         public decimal NetAmount { get; set; }
         public string Status { get; set; }

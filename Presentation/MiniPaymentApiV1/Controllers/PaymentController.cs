@@ -7,11 +7,6 @@ using MiniPaymentApiV1.Application.Features.Commands.Payment.Pay;
 
 namespace MiniPaymentApiV1.Controllers
 {
-    //[Route("api/[controller]")]
-    //[ApiController]
-    //public class PaymentController : ControllerBase
-    //{
-    //}
 
 
     [Route("api/[controller]")]
