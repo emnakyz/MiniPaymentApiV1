@@ -20,7 +20,7 @@ namespace MiniPaymentApiV1.Controllers
             _mediator = mediator;
         }
 
-             
+        //    
         [HttpPost]
         [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Payment, ActionType = ActionType.Writing, Definition = "Create Payment")]
         public async Task<ActionResult> Pay(PayCommandRequest payCommandRequest)
